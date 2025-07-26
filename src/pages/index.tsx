@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import React from "react";
-import HeroSection from "./components/heroSection";
-import GarGarHero from "./components/gargarHero";
-import StatementCards from "./components/statementCards";
-import PhotoGallery from "./components/photoGallery";
+import HeroSection from "../../components/heroSection";
+import GarGarHero from "../../components/gargarHero";
+import StatementCards from "../../components/statementCards";
+import PhotoGallery from "../../components/photoGallery";
 import Image from "next/image";
-import LatestNewsSection from "./components/cards";
-import StorySection from "./components/story";
+import LatestNewsSection from "../../components/cards";
+import StorySection from "../../components/story";
 
 const index = () => {
   const photos = [
