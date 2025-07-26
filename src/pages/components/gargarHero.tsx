@@ -22,7 +22,9 @@ export default function GarGarHero() {
   // Play current video when it changes
   useEffect(() => {
     if (videoRefs.current[current]) {
-      videoRefs.current[current]?.play().catch(e => console.log("Autoplay prevented:", e));
+      videoRefs.current[current]
+        ?.play()
+        .catch((e) => console.log("Autoplay prevented:", e));
     }
   }, [current]);
 
@@ -67,7 +69,10 @@ export default function GarGarHero() {
           ))}
         </div>
 
-        <div className=" mx-auto relative z-10" style={{ textAlignLast: 'center'}}>
+        <div
+          className=" mx-auto relative z-10"
+          style={{ textAlignLast: "center" }}
+        >
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -75,16 +80,20 @@ export default function GarGarHero() {
             className="text-4xl sm:text-5xl md:text-5xl font-bold leading-tight tracking-tight"
           >
             My name is{" "}
-            <motion.span 
+            <motion.span
               className="text-teal-400 inline-block"
-              animate={{ 
+              animate={{
                 scale: [1, 1.05, 1],
-                textShadow: ["0 0 8px rgba(74, 222, 128, 0)", "0 0 16px rgba(74, 222, 128, 0.3)", "0 0 8px rgba(74, 222, 128, 0)"]
+                textShadow: [
+                  "0 0 8px rgba(74, 222, 128, 0)",
+                  "0 0 16px rgba(74, 222, 128, 0.3)",
+                  "0 0 8px rgba(74, 222, 128, 0)",
+                ],
               }}
               transition={{
                 duration: 3,
                 repeat: Infinity,
-                repeatType: "reverse"
+                repeatType: "reverse",
               }}
             >
               Gar Gar
@@ -93,13 +102,13 @@ export default function GarGarHero() {
             <br className="hidden lg:block" />
             <motion.span
               className="inline-block mt-2 bg-gradient-to-r from-teal-400 to-blue-400 bg-clip-text text-transparent"
-              animate={{ 
+              animate={{
                 x: [0, 5, 0],
               }}
               transition={{
                 duration: 5,
                 repeat: Infinity,
-                repeatType: "mirror"
+                repeatType: "mirror",
               }}
             >
               Ward 9 City Councillor
@@ -120,7 +129,9 @@ export default function GarGarHero() {
             className="absolute inset-0"
           >
             <video
-              ref={(el) => (videoRefs.current[current] = el)}
+              ref={(el) => {
+                videoRefs.current[current] = el;
+              }}
               src={videos[current]}
               autoPlay
               muted
@@ -138,7 +149,9 @@ export default function GarGarHero() {
             <button
               key={i}
               onClick={() => goToSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${i === current ? 'bg-teal-400 w-6' : 'bg-white/50'}`}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                i === current ? "bg-teal-400 w-6" : "bg-white/50"
+              }`}
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
