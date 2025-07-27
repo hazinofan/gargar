@@ -17,7 +17,7 @@ const index = () => {
       role: "Philanthropist and Entrepreneur",
       quote:
         "Gar Gar was my colleague at SAIT. Because of his work ethic and commitment to excellence, I highly recommend him. One of his many outstanding achievements is creating a scholarship to further South Sudanese youth education at SAIT. He also demonstrated strong leadership as SAITSA president. I am a proud supporter of his education initiative!",
-      image: "/assets/Neveen endorsement_edited.png", // your actual path
+      image: "/assets/Neveen endorsement_edited.png",
     },
     // …more testimonials…
   ];
@@ -30,6 +30,24 @@ const index = () => {
       <PhotoGallery photos={photos} /> */}
       <StoryCarousel
         items={[
+          {
+            src: "/assets/image6.png",
+            alt: "Gar Gar's story",
+            title:
+              "Gar was at a crossroads. While he cherished his South Sudan community, he knew that it would be all too easy to become complacent. In order to live his dreams, he would need to put himself in uncomfortable situations. Exposing himself to new people, new cultures, and new ideas.",
+          },
+          {
+            src: "/assets/image7.png",
+            alt: "Gar Gar's story",
+            title:
+              "Despite being told that he would likely never attend post-secondary, Gar’s graduation from the English program and upgrading at Bow Valley College finally paid off. In 2011, he would find himself walking the campus halls of SAIT Polytechnic",
+          },
+          {
+            src: "/assets/image8.png",
+            alt: "Gar Gar's story",
+            title:
+              "It was at SAIT, when he truly understood his father's philosophy. Surrounded by opportunities, all it took was a little bit of courage. Despite his mother's insistence, he threw his hat into the political arena, hoping to make a difference. Every day, he connected with students. Finding solutions to the problems they faced every day.  ",
+          },
           {
             src: "/assets/image1.png",
             alt: "Gar Gar's story",
@@ -59,24 +77,6 @@ const index = () => {
             alt: "Gar Gar's story",
             title:
               "His five children that followed changed the way he saw the world. Every day, he would take steps to make Calgary and  his Ward 9 community an even better place. A place that they all could finally call home. Safe. Prosperous. Vibrant.",
-          },
-          {
-            src: "/assets/image6.png",
-            alt: "Gar Gar's story",
-            title:
-              "Gar was at a crossroads. While he cherished his South Sudan community, he knew that it would be all too easy to become complacent. In order to live his dreams, he would need to put himself in uncomfortable situations. Exposing himself to new people, new cultures, and new ideas.",
-          },
-          {
-            src: "/assets/image7.png",
-            alt: "Gar Gar's story",
-            title:
-              "Despite being told that he would likely never attend post-secondary, Gar’s graduation from the English program and upgrading at Bow Valley College finally paid off. In 2011, he would find himself walking the campus halls of SAIT Polytechnic",
-          },
-          {
-            src: "/assets/image8.png",
-            alt: "Gar Gar's story",
-            title:
-              "It was at SAIT, when he truly understood his father's philosophy. Surrounded by opportunities, all it took was a little bit of courage. Despite his mother's insistence, he threw his hat into the political arena, hoping to make a difference. Every day, he connected with students. Finding solutions to the problems they faced every day.  ",
           },
           {
             src: "/assets/image9.png",

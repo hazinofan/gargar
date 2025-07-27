@@ -52,8 +52,8 @@ export default function StoryCarousel({ items }: { items: StoryItem[] }) {
 
   return (
     <div id="my-story" className="relative w-full max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-      {/* Sliding Container */}
-      <div className={`relative ${isMobile ? 'h-[500px]' : 'h-[550px]'} overflow-hidden`}>
+      {/* Sliding Container - Increased height */}
+      <div className={`relative ${isMobile ? 'h-[600px]' : 'h-[700px]'} overflow-hidden`}>
         <motion.div
           className="flex absolute h-full"
           style={{ 
@@ -70,10 +70,10 @@ export default function StoryCarousel({ items }: { items: StoryItem[] }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {/* Card with hover effect */}
+              {/* Card with hover effect - Adjusted image/text ratio */}
               <div className="h-full flex flex-col bg-white rounded-lg sm:rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-gray-200 group hover:-translate-y-1">
-                {/* Image Section */}
-                <div className="relative h-[50%] w-full">
+                {/* Image Section - Now takes 70% of card height */}
+                <div className="relative h-[70%] w-full">
                   <Image
                     src={item.src}
                     alt={item.alt}
@@ -85,9 +85,9 @@ export default function StoryCarousel({ items }: { items: StoryItem[] }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
                 
-                {/* Text Section */}
-                <div className="h-[50%] p-4 sm:p-6 overflow-y-auto">
-                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed line-clamp-5 sm:line-clamp-6">
+                {/* Text Section - Now takes 30% of card height */}
+                <div className="h-[40%] p-4 sm:p-6 overflow-y-auto">
+                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                     {item.title}
                   </p>
                 </div>

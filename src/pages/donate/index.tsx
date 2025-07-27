@@ -1,4 +1,3 @@
-// components/DonatePage.tsx
 import { useState } from "react";
 import Image from "next/image";
 
@@ -28,21 +27,21 @@ export default function DonatePage() {
   const taxCredit = (donation * 0.75).toFixed(2);
 
   return (
-    <section className="relative w-full min-h-screen flex">
-      {/* BG Image - now full width */}
-      <div className="absolute inset-0">
+    <section className="w-full min-h-screen flex flex-col lg:flex-row">
+      {/* Image Section - now positioned next to form on large screens */}
+      <div className="lg:w-2/3 relative h-64 lg:h-auto">
         <Image
-          src="/assets/_S8A4861.jpg"
+          src="/assets/14715617_10210085962806229_5622527816333749007_o_edited.jpg"
           alt="Rally background"
           fill
-          className="object-cover"
+          className="object-cover object-top"
           priority
         />
         <div className="absolute inset-0 bg-black/60" />
       </div>
 
-      {/* Sidebar with dark transparent background */}
-      <div className="relative z-10 w-full lg:w-1/3 bg-black/70 backdrop-blur-sm rounded-tr-2xl rounded-br-2xl shadow-xl p-8 flex flex-col text-white">
+      {/* Form Section */}
+      <div className="lg:w-1/3 bg-black backdrop-blur-sm lg:rounded-tr-2xl lg:rounded-br-2xl shadow-xl p-8 flex flex-col text-white">
         {/* Header & Steps */}
         <h2 className="text-2xl font-bold text-white mb-2">
           SUPPORT YOUR CONSERVATIVE TEAM
@@ -53,7 +52,7 @@ export default function DonatePage() {
               <div
                 className={`mx-auto w-8 h-8 flex items-center justify-center rounded-full border-2 ${
                   i === currentStep
-                    ? "bg-red-600 border-red-600 text-white"
+                    ? "bg-[#49a0a7] border-[#49a0a7] text-white"
                     : "border-gray-400 text-gray-200"
                 }`}
               >
@@ -61,7 +60,7 @@ export default function DonatePage() {
               </div>
               <span
                 className={`block mt-1 text-xs ${
-                  i === currentStep ? "text-red-400" : "text-gray-300"
+                  i === currentStep ? "text-[#49a0a7]" : "text-gray-300"
                 }`}
               >
                 {label}
@@ -85,7 +84,7 @@ export default function DonatePage() {
                     onClick={() => setSelected(amt)}
                     className={`py-3 rounded-lg font-semibold ${
                       selected === amt
-                        ? "bg-red-600 text-white"
+                        ? "bg-[#49a0a7] text-white"
                         : "bg-[#0F2345]/90 text-white hover:bg-[#123] transition"
                     }`}
                   >
@@ -116,28 +115,9 @@ export default function DonatePage() {
               <label className="flex items-start bg-white/10 text-white p-4 rounded-lg mb-3 border border-gray-400">
                 <input
                   type="checkbox"
-                  checked={coverFee}
-                  onChange={() => setCoverFee((c) => !c)}
-                  className="mr-3 mt-1 accent-red-500"
-                />
-                Cover the processing fee ($
-                {(donation * 0.0204).toFixed(2)}) so 100% goes to the party.
-              </label>
-              <label className="flex items-start bg-white/10 text-white p-4 rounded-lg mb-3 border border-gray-400">
-                <input
-                  type="checkbox"
-                  checked={recurring}
-                  onChange={() => setRecurring((r) => !r)}
-                  className="mr-3 mt-1 accent-red-500"
-                />
-                Make this a monthly recurring donation.
-              </label>
-              <label className="flex items-start bg-white/10 text-white p-4 rounded-lg mb-3 border border-gray-400">
-                <input
-                  type="checkbox"
                   checked={becomeMember}
                   onChange={() => setBecomeMember((m) => !m)}
-                  className="mr-3 mt-1 accent-red-500"
+                  className="mr-3 mt-1 accent-[#49a0a7]"
                 />
                 Become a member?
               </label>

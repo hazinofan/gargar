@@ -42,23 +42,21 @@ export default function VolunteerPage() {
   ];
 
   return (
-    <section className="relative w-full min-h-screen flex">
-      {/* Background Image - Full width */}
-      <div className="fixed inset-0">
+    <section className="w-full min-h-screen flex flex-col lg:flex-row">
+      {/* Image Section - now positioned next to form on large screens */}
+      <div className="lg:w-2/3 relative h-64 lg:h-auto">
         <Image
-          src="/assets/_S8A4861.jpg"
+          src="/assets/47305069_10216924835173764_569638931193135104_n.jpg"
           alt="Volunteer background"
           fill
           className="object-cover"
           priority
         />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      {/* Semi-transparent overlay - Only on right side */}
-      <div className="fixed inset-0 lg:left-1/3 bg-black/30"></div>
-
-      {/* Form Panel - Left side with transparency */}
-      <div className="relative z-10 w-full lg:w-1/3 min-h-screen bg-black/70 backdrop-blur-lg p-8 md:p-12 lg:p-16 text-white border-r border-white/10">
+      {/* Form Section */}
+      <div className="lg:w-1/3 bg-black/70 backdrop-blur-lg lg:rounded-tr-2xl lg:rounded-br-2xl shadow-xl p-8 md:p-12 lg:p-16 text-white border-r border-white/10">
         <div className="max-w-md mx-auto h-full flex flex-col">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Volunteer With Us</h2>
@@ -218,9 +216,6 @@ export default function VolunteerPage() {
           </p>
         </div>
       </div>
-
-      {/* Right side - Just shows the image */}
-      <div className="hidden lg:block lg:w-2/3"></div>
     </section>
   );
 }

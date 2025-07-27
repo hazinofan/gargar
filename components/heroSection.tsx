@@ -80,7 +80,7 @@ export default function HeroSection() {
             {/* Secondary Button */}
             <Link
               href="/volunteer"
-              className="relative px-8 py-4 bg-blue-900 border-2 border-blue-900/80 hover:border-blue-900 text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
+              className="relative px-8 py-4 bg-[#49a0a7] border-2 border-[#49a0a7] hover:border-[#142123] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
             >
               <span className="relative z-10 flex items-center">
                 Volunteer
