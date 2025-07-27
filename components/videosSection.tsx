@@ -65,7 +65,7 @@ const VideoSection = () => {
               {/* Video Container - Autoplay and Loop */}
               <div className="relative aspect-video bg-gray-200 overflow-hidden">
                 <video
-                  ref={el => videoRefs.current[index] = el}
+                  ref={el => { videoRefs.current[index] = el }}
                   className="w-full h-full object-cover"
                   muted
                   loop
