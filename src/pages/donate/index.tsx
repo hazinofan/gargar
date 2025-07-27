@@ -28,22 +28,10 @@ export default function DonatePage() {
 
   return (
     <section className="w-full min-h-screen flex flex-col lg:flex-row">
-      {/* Image Section - now positioned next to form on large screens */}
-      <div className="lg:w-2/3 relative h-64 lg:h-auto">
-        <Image
-          src="/assets/14715617_10210085962806229_5622527816333749007_o_edited.jpg"
-          alt="Rally background"
-          fill
-          className="object-cover object-top"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
-
-      {/* Form Section */}
-      <div className="lg:w-1/3 bg-black backdrop-blur-sm lg:rounded-tr-2xl lg:rounded-br-2xl shadow-xl p-8 flex flex-col text-white">
+      {/* Form Section - Now on the left */}
+      <div className="lg:w-1/3 bg-white shadow-xl p-8 flex flex-col text-[#0F2345]">
         {/* Header & Steps */}
-        <h2 className="text-2xl font-bold text-white mb-2">
+        <h2 className="text-2xl font-bold text-[#0F2345] mb-2">
           SUPPORT YOUR CONSERVATIVE TEAM
         </h2>
         <div className="flex items-center justify-between mb-6">
@@ -53,20 +41,20 @@ export default function DonatePage() {
                 className={`mx-auto w-8 h-8 flex items-center justify-center rounded-full border-2 ${
                   i === currentStep
                     ? "bg-[#49a0a7] border-[#49a0a7] text-white"
-                    : "border-gray-400 text-gray-200"
+                    : "border-gray-400 text-gray-600"
                 }`}
               >
                 {i + 1}
               </div>
               <span
                 className={`block mt-1 text-xs ${
-                  i === currentStep ? "text-[#49a0a7]" : "text-gray-300"
+                  i === currentStep ? "text-[#49a0a7]" : "text-gray-500"
                 }`}
               >
                 {label}
               </span>
               {i < steps.length - 1 && (
-                <div className="absolute top-4 right-0 w-1/3 h-px bg-gray-400" />
+                <div className="absolute top-4 right-0 w-1/3 h-px bg-gray-300" />
               )}
             </div>
           ))}
@@ -85,7 +73,7 @@ export default function DonatePage() {
                     className={`py-3 rounded-lg font-semibold ${
                       selected === amt
                         ? "bg-[#49a0a7] text-white"
-                        : "bg-[#0F2345]/90 text-white hover:bg-[#123] transition"
+                        : "bg-[#0F2345] text-white hover:bg-[#123] transition"
                     }`}
                   >
                     ${amt}
@@ -95,8 +83,8 @@ export default function DonatePage() {
                   onClick={() => setSelected("other")}
                   className={`py-3 rounded-lg font-semibold ${
                     selected === "other"
-                      ? "bg-white/20 text-white border-2 border-white"
-                      : "bg-white/10 text-gray-200 border-2 border-gray-400 hover:border-white transition"
+                      ? "bg-gray-100 text-[#0F2345] border-2 border-[#0F2345]"
+                      : "bg-gray-100 text-gray-600 border-2 border-gray-300 hover:border-gray-400 transition"
                   }`}
                 >
                   Other
@@ -108,18 +96,18 @@ export default function DonatePage() {
                   placeholder="$"
                   value={otherValue}
                   onChange={(e) => setOtherValue(e.target.value)}
-                  className="w-full mb-4 px-3 py-2 border border-gray-400 rounded-lg bg-white/10 text-white placeholder-gray-300"
+                  className="w-full mb-4 px-3 py-2 border border-gray-300 rounded-lg text-[#0F2345] placeholder-gray-400"
                 />
               )}
-              {/* Fees & Recurring */}
-              <label className="flex items-start bg-white/10 text-white p-4 rounded-lg mb-3 border border-gray-400">
+              {/* Checkbox */}
+              <label className="flex items-start bg-gray-100 p-4 rounded-lg mb-3 border border-gray-300">
                 <input
                   type="checkbox"
                   checked={becomeMember}
                   onChange={() => setBecomeMember((m) => !m)}
                   className="mr-3 mt-1 accent-[#49a0a7]"
                 />
-                Become a member?
+                <span className="text-[#0F2345]">Become a member?</span>
               </label>
             </>
           )}
@@ -143,15 +131,14 @@ export default function DonatePage() {
                   onChange={(e) =>
                     setContact((c) => ({ ...c, [field]: e.target.value }))
                   }
-                  className="w-full px-3 py-2 border border-gray-400 rounded-lg bg-white/10 text-white placeholder-gray-300"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-[#0F2345] placeholder-gray-400"
                 />
               ))}
             </div>
           )}
 
           {currentStep === 2 && (
-            <div className="text-center text-gray-200">
-              {/* Simulate Payment Step */}
+            <div className="text-center text-gray-600">
               <p>Here you'd collect credit card info via your gateway's SDK.</p>
             </div>
           )}
@@ -159,7 +146,7 @@ export default function DonatePage() {
 
         {/* Tax Credit (only on first step) */}
         {currentStep === 0 && donation > 0 && (
-          <div className="bg-green-600/80 text-white p-4 rounded-lg mb-4">
+          <div className="bg-green-600 text-white p-4 rounded-lg mb-4">
             Your donation of ${donation.toFixed(2)} is eligible for a tax credit
             up to ${taxCredit}
           </div>
@@ -172,7 +159,7 @@ export default function DonatePage() {
               onClick={() =>
                 setCurrentStep((s) => (s > 0 ? ((s - 1) as 0 | 1 | 2) : s))
               }
-              className="px-6 py-3 bg-[#0F2345]/90 text-white rounded-lg hover:bg-[#123] transition"
+              className="px-6 py-3 bg-[#0F2345] text-white rounded-lg hover:bg-[#123] transition"
             >
               Back
             </button>
@@ -192,13 +179,24 @@ export default function DonatePage() {
             }
             className={`px-6 py-3 rounded-lg font-semibold transition ${
               currentStep === 2
-                ? "bg-gray-500/50 text-gray-300 cursor-not-allowed"
-                : "bg-[#0F2345]/90 text-white hover:bg-[#123]"
+                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-[#0F2345] text-white hover:bg-[#123]"
             }`}
           >
             {currentStep < 2 ? "Next" : "Finish"}
           </button>
         </div>
+      </div>
+
+      {/* Image Section - now on the right with no overlay */}
+      <div className="lg:w-2/3 relative h-64 lg:h-auto">
+        <Image
+          src="/assets/14715617_10210085962806229_5622527816333749007_o_edited.jpg"
+          alt="Rally background"
+          fill
+          className="object-cover object-top"
+          priority
+        />
       </div>
     </section>
   );
