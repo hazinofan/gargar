@@ -49,14 +49,14 @@ export default function VolunteerPage() {
           src="/assets/47305069_10216924835173764_569638931193135104_n.jpg"
           alt="Volunteer background"
           fill
-          className="object-cover"
+          className="object-cover object-top"
           priority
         />
         <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Form Section */}
-      <div className="lg:w-1/3 bg-black/70 backdrop-blur-lg lg:rounded-tr-2xl lg:rounded-br-2xl shadow-xl p-8 md:p-12 lg:p-16 text-white border-r border-white/10">
+      <div className="lg:w-1/3 bg-black backdrop-blur-lg lg:rounded-tr-2xl lg:rounded-br-2xl shadow-xl p-8 md:p-12 lg:p-16 text-white border-r border-white/10">
         <div className="max-w-md mx-auto h-full flex flex-col">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Volunteer With Us</h2>
