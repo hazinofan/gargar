@@ -43,7 +43,7 @@ export default function GarGarHero() {
   return (
     <div className="w-full overflow-hidden relative">
       {/* Hero Text Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[1, 2, 3].map((i) => (
@@ -69,15 +69,139 @@ export default function GarGarHero() {
           ))}
         </div>
 
-        <div
-          className=" mx-auto relative z-10"
-          style={{ textAlignLast: "center" }}
-        >
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Mission Statement Cards */}
+          {/* Mission Statement Cards - Modern Version */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            {[
+              {
+                title: "Find Our Voice",
+                description:
+                  "Amplifying community concerns through transparent leadership",
+                icon: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                title: "Build Our Home",
+                description:
+                  "Creating sustainable neighborhoods for future generations",
+                icon: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
+                    />
+                  </svg>
+                ),
+              },
+              {
+                title: "Seize Our Future",
+                description: "Innovative solutions for Ward 9's evolving needs",
+                icon: (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-12 w-12"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                ),
+              },
+            ].map((card, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -8, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative p-8 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-700 hover:from-teal-900/50 hover:to-blue-900/50 border border-gray-700 hover:border-teal-400/30 transition-all duration-300 overflow-hidden"
+              >
+                {/* Animated background element */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  initial={{ x: -100 }}
+                  whileHover={{ x: 0 }}
+                />
+
+                {/* Glow effect */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-teal-400/20 to-blue-400/20 blur-md"></div>
+                </div>
+
+                <div className="relative z-10">
+                  {/* Icon with animation */}
+                  <motion.div
+                    className="mb-6 text-teal-400 group-hover:text-white transition-colors duration-300"
+                    animate={{
+                      rotate: [0, 5, -5, 0],
+                      scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                      delay: index * 0.2,
+                    }}
+                  >
+                    {card.icon}
+                  </motion.div>
+
+                  <h3 className="text-3xl font-bold mb-3 bg-gradient-to-r from-teal-300 to-blue-300 bg-clip-text text-transparent group-hover:from-white group-hover:to-white transition-all duration-300">
+                    {card.title}
+                  </h3>
+                  <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                    {card.description}
+                  </p>
+
+                  {/* Animated underline */}
+                  <motion.div
+                    className="mt-4 h-0.5 bg-teal-400 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl sm:text-5xl md:text-5xl font-bold leading-tight tracking-tight"
+            className="text-4xl sm:text-5xl md:text-5xl font-bold leading-tight tracking-tight text-center"
           >
             My name is{" "}
             <motion.span
@@ -115,89 +239,6 @@ export default function GarGarHero() {
             </motion.span>
           </motion.h1>
         </div>
-      </section>
-
-      {/* Video Carousel Section */}
-      <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] w-full bg-black">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={current}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0"
-          >
-            <video
-              ref={(el) => {
-                videoRefs.current[current] = el;
-              }}
-              src={videos[current]}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Navigation Dots */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-          {videos.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goToSlide(i)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                i === current ? "bg-teal-400 w-6" : "bg-white/50"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Prev/Next Buttons */}
-        <button
-          onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 group"
-          aria-label="Previous video"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-white group-hover:text-teal-400 transition-colors"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-black/50 hover:bg-black/70 transition-all duration-300 group"
-          aria-label="Next video"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 text-white group-hover:text-teal-400 transition-colors"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
       </section>
     </div>
   );

@@ -1,19 +1,22 @@
-import type { AppProps } from 'next/app'
-import '@/styles/globals.css'
-import { Inter } from 'next/font/google'
-import Navbar from './layouts/navbar'
+// pages/_app.tsx
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import { Montserrat } from "next/font/google";
+import Navbar from "./layouts/navbar";
+import Footer from "./layouts/footer";
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-inter', 
-})
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-sans",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${inter.className}`}>
+    <main className={`${montserrat.variable} font-sans`}>
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </main>
-  )
+  );
 }
