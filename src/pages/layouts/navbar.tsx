@@ -14,7 +14,7 @@ export default function Navbar() {
           <Link href="/" className="flex-shrink-0 flex items-center">
             <div className="relative w-16 h-16 md:w-28 md:h-28">
               <Image
-                src="/assets/logo.png"
+                src="/assets/logo2.png"
                 alt="Gar Gar logo"
                 fill
                 className="object-contain"

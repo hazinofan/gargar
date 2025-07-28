@@ -1,101 +1,127 @@
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 1 } },
-  };
-
-  const slideUp = {
-    hidden: { y: 50, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.8 } },
-  };
-
-  const staggerContainer = {
-    visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Image with Parallax Effect */}
-            <motion.div
+      {/* 1) Background video + overlay */}
+      <motion.div
         className="absolute inset-0 z-0"
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
       >
         <video
-          src="/assets/01 - agIAK0JVCDU6UkVgCzE___8.mp4"
-          className="w-full h-full object-cover object-center"
+          src="/assets/49 - whats happening 2.mp4"
+          className="w-full h-full object-cover"
           autoPlay
           loop
           muted
           playsInline
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/30" />
+        <div className="absolute inset-0 bg-black/40" />
       </motion.div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="w-full max-w-7xl"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          {/* Main CTA Buttons */}
-          <motion.div
-            className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6"
-            variants={slideUp}
-          >
-            {/* Primary Button */}
-            <Link
-              href="/donate"
-              className="relative px-8 py-4 bg-gradient-to-r from-[#436e6b] to-[#436e6b] hover:from-[#1e3130] hover:to-[#1c4240] text-white font-bold text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
+      {/* 2) Content grid */}
+      <div className="relative z-10 h-full flex flex-col md:flex-row">
+        {/* Mobile: Text first, then image */}
+        <div className="flex flex-col h-full md:hidden">
+          {/* Text section - mobile */}
+          <div className="flex-1 flex items-center justify-center px-4 sm:px-6">
+            <motion.div
+              className="w-full max-w-2xl text-white text-center space-y-4"
+              initial="hidden"
+              animate="visible"
+              variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
             >
-              <span className="relative z-10 flex items-center">
-                Join Now
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </span>
-              <span className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition-all duration-300 rounded-full"></span>
-            </Link>
+              <motion.h1
+                className="text-2xl xs:text-3xl sm:text-4xl font-bold leading-tight"
+                variants={fadeIn}
+              >
+               <p> Together for a strong Ward 9 </p>
+              </motion.h1>
+              <motion.p
+                className="text-base xs:text-lg sm:text-xl max-w-lg mx-auto"
+                variants={fadeIn}
+              >
+                Gar Gar
+              </motion.p>
+            </motion.div>
+          </div>
+          
+          {/* Image section - mobile */}
+          <div className="flex justify-center pb-8">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <div className="w-[180px] h-[180px] xs:w-[200px] xs:h-[200px] sm:w-[220px] sm:h-[220px]">
+                <Image
+                  src="/assets/520279053_10237040292407623_8431957161010493328_n_edited.png"
+                  alt="Gar Gar"
+                  width={600}
+                  height={600}
+                  className="w-full h-full object-contain"
+                  priority
+                  sizes="(max-width:475px) 180px, (max-width:640px) 200px, (max-width:768px) 220px, (max-width:1024px) 200px, (max-width:1280px) 30vw, 600px"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
 
-            
-          </motion.div>
-
-          {/* Scroll indicator */}
+        {/* Desktop: Original layout */}
+        {/* 2a) Left column: image pinned bottom-left - desktop only */}
+        <div className="relative flex-shrink-0 hidden md:block md:h-full md:w-1/2">
           <motion.div
-            className="mt-16 flex flex-col items-center"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
+            className="absolute bottom-0 left-80 md:p-6"
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
           >
-            <span className="text-white/80 text-sm mb-2">Scroll Down</span>
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-              <motion.div
-                className="w-1 h-2 bg-white rounded-full mt-2"
-                animate={{ y: [0, 4, 0] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
+            <div className="md:w-[clamp(150px,35vw,600px)] md:h-auto">
+              <Image
+                src="/assets/520279053_10237040292407623_8431957161010493328_n_edited.png"
+                alt="Gar Gar"
+                width={800}
+                height={1000}
+                className="md:h-auto object-contain"
+                priority
+                sizes="(max-width:1024px) 200px, (max-width:1280px) 30vw, 600px"
               />
             </div>
           </motion.div>
-        </motion.div>
+        </div>
+
+        {/* 2b) Right column: wider text area - desktop only */}
+        <div className="hidden md:flex md:h-full md:w-1/2 md:items-center md:justify-center px-4 sm:px-6 lg:px-12">
+          <motion.div
+            className="w-full max-w-2xl text-white md:text-left space-y-6"
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.3 } } }}
+          >
+            <motion.h1
+              className="md:text-5xl font-bold leading-tight"
+              variants={fadeIn}
+            >
+              Together for a<br />
+              <span className="md:text-6xl">strong Ward 9</span>
+            </motion.h1>
+            <motion.p
+              className="md:text-xl max-w-lg"
+              variants={fadeIn}
+            >
+              Gar Gar
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

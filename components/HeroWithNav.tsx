@@ -8,7 +8,6 @@ const links = [
   "WHY I'M RUNNING",
   "YOUR STORY",
   "PLATFORM",
-  // "NEWS",
   "TAKE ACTION",
 ];
 
@@ -17,7 +16,7 @@ export default function HeroWithNav() {
   const [showWhyRunningModal, setShowWhyRunningModal] = useState(false);
   const [showActionModal, setShowActionModal] = useState(false);
 
-  const handleClick = (label:any) => {
+  const handleClick = (label: any) => {
     if (label === "MY STORY") {
       setShowMyStoryModal(true);
     } else if (label === "WHY I'M RUNNING") {
@@ -55,7 +54,11 @@ export default function HeroWithNav() {
               <button
                 key={label}
                 onClick={() => handleClick(label)}
-                className="w-48 text-center py-3 border-2 border-gray-800 rounded-lg font-medium hover:bg-gray-100 transition-all duration-300 hover:shadow-md"
+                className="w-48 text-center cursor-pointer py-3 px-4 border-2 border-gray-800 rounded-lg font-medium 
+                  bg-white text-gray-900 
+                  hover:bg-gray-900 hover:text-white 
+                  transition-all duration-300 hover:shadow-lg
+                  transform hover:-translate-y-1"
               >
                 {label}
               </button>
@@ -63,7 +66,11 @@ export default function HeroWithNav() {
               <Link
                 key={label}
                 href={href}
-                className="w-48 text-center py-3 border-2 border-gray-800 rounded-lg font-medium hover:bg-gray-100 transition-all duration-300 hover:shadow-md"
+                className="w-48 text-center cursor-pointer py-3 px-4 border-2 border-gray-800 rounded-lg font-medium 
+                  bg-white text-gray-900 
+                  hover:bg-gray-900 hover:text-white 
+                  transition-all duration-300 hover:shadow-lg
+                  transform hover:-translate-y-1"
               >
                 {label}
               </Link>
@@ -104,12 +111,18 @@ export default function HeroWithNav() {
               </button>
 
               <div className="p-8 md:p-10 text-gray-800 space-y-6">
-                <h2 className="text-3xl font-bold mb-4">My Story</h2>
+                <h2 className="text-3xl font-bold mb-4">Gar Gar — Proven Leadership. Community-Driven Action.</h2>
                 <p>
-                  Born in the ashes of war, Gar’s family continually sought refuge. Gar learned that the only way to survive was to keep quiet, put your head down, and never expect too much.
-                </p>
-                <p>
-                  At age 17, enrolling in the first of its kind, Gar participated in a “bridge program” at Inglweood/ Ramsay school for learning new languages. Although he saw progression, he felt the stigma from being labeled an “outsider”. However, one simple investment from a teacher and Ramsay community member changed everything. She saw his potential, his future, and his character and how he quickly begin helping others. She consistency challenged Gar’s self-limiting beliefs, giving him the confidence to become fluent in English.
+                  Gar Gar — Proven Leadership. Community-Driven Action.
+
+Gar Gar is a grassroots community leader with over two decades of effective, on-the-ground service in Ward 9, East Calgary. He has earned numerous accolades for his contributions, including the Queen Elizabeth II’s Platinum Jubilee Medal, the Alberta Justice Award, the Ward 9 Community Leadership Award, and the Calgary Police Chief’s Coin.
+
+As President of the Forest Lawn Community Association, Gar led transformative initiatives that fostered community pride, strengthened unity, and helped shift long-standing negative perceptions of East Calgary. His efforts included securing $700,000 in funding for an inclusive playground and championing a major park revitalization — transforming it from a passive seating area into a vibrant, multi-sport basketball court that now serves as an active, welcoming space for youth and families, and even becomes a temporary ice skating rink during the winter months.
+
+Gar is also the founder of the Ward 9 Community Association Executive Council, where he brings together presidents/repetitive of Ward 9 community associations — and actively reaches out to other CA executives across Ward 9 — to ensure every voice is heard at that table. Together, his aim was to collaboratively address common key community issues such as traffic, public safety, rezoning, and infrastructure.
+
+Known for getting things done, Gar spearheaded Calgary’s first Heroes Crosswalk, making it a reality within just one week. He also led a successful two-week advocacy to secure $2 pool access for Ward 9 families at the Greater Forest Lawn outdoor pool — making recreational spaces more accessible for all.
+ 
                 </p>
               </div>
             </motion.div>

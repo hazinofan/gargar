@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
+import { loadStripe } from "@stripe/stripe-js";
 
 const steps = ["Donate", "Details", "Payment"] as const;
 type Step = (typeof steps)[number];
 
 type DonationFrequency = "one-time" | "weekly" | "monthly";
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function DonatePage() {
   const amounts = [35, 50, 100, 250, 500, 1000, 1750] as const;
@@ -38,18 +40,16 @@ export default function DonatePage() {
           {steps.map((label, i) => (
             <div key={label} className="flex-1 text-center relative">
               <div
-                className={`mx-auto w-8 h-8 flex items-center justify-center rounded-full border-2 ${
-                  i === currentStep
-                    ? "bg-[#49a0a7] border-[#49a0a7] text-white"
-                    : "border-gray-400 text-gray-600"
-                }`}
+                className={`mx-auto w-8 h-8 flex items-center justify-center rounded-full border-2 ${i === currentStep
+                  ? "bg-[#49a0a7] border-[#49a0a7] text-white"
+                  : "border-gray-400 text-gray-600"
+                  }`}
               >
                 {i + 1}
               </div>
               <span
-                className={`block mt-1 text-xs ${
-                  i === currentStep ? "text-[#49a0a7]" : "text-gray-500"
-                }`}
+                className={`block mt-1 text-xs ${i === currentStep ? "text-[#49a0a7]" : "text-gray-500"
+                  }`}
               >
                 {label}
               </span>
@@ -70,22 +70,20 @@ export default function DonatePage() {
                   <button
                     key={amt}
                     onClick={() => setSelected(amt)}
-                    className={`py-3 rounded-lg font-semibold ${
-                      selected === amt
-                        ? "bg-[#49a0a7] text-white"
-                        : "bg-[#0F2345] text-white hover:bg-[#123] transition"
-                    }`}
+                    className={`py-3 rounded-lg font-semibold ${selected === amt
+                      ? "bg-[#49a0a7] text-white"
+                      : "bg-[#0F2345] text-white hover:bg-[#123] transition"
+                      }`}
                   >
                     ${amt}
                   </button>
                 ))}
                 <button
                   onClick={() => setSelected("other")}
-                  className={`py-3 rounded-lg font-semibold ${
-                    selected === "other"
-                      ? "bg-gray-100 text-[#0F2345] border-2 border-[#0F2345]"
-                      : "bg-gray-100 text-gray-600 border-2 border-gray-300 hover:border-gray-400 transition"
-                  }`}
+                  className={`py-3 rounded-lg font-semibold ${selected === "other"
+                    ? "bg-gray-100 text-[#0F2345] border-2 border-[#0F2345]"
+                    : "bg-gray-100 text-gray-600 border-2 border-gray-300 hover:border-gray-400 transition"
+                    }`}
                 >
                   Other
                 </button>
@@ -99,7 +97,7 @@ export default function DonatePage() {
                   className="w-full mb-4 px-3 py-2 border border-gray-300 rounded-lg text-[#0F2345] placeholder-gray-400"
                 />
               )}
-              
+
               {/* Donation Frequency Radio Buttons */}
               <div className="space-y-3 mb-4">
                 <label className="flex items-center bg-gray-100 p-4 rounded-lg border border-gray-300">
@@ -151,8 +149,8 @@ export default function DonatePage() {
                     field === "title"
                       ? "Title"
                       : field === "phone"
-                      ? "Phone"
-                      : field.replace(/([A-Z])/g, " $1")
+                        ? "Phone"
+                        : field.replace(/([A-Z])/g, " $1")
                   }
                   value={(contact as any)[field]}
                   onChange={(e) =>
@@ -181,6 +179,7 @@ export default function DonatePage() {
 
         {/* Navigation Buttons */}
         <div className="flex justify-between">
+          {/* Bouton RETOUR */}
           {currentStep > 0 ? (
             <button
               onClick={() =>
@@ -194,23 +193,39 @@ export default function DonatePage() {
             <div className="w-24" />
           )}
 
+          {/* Bouton SUIVANT ou PAYER */}
           <button
-            onClick={() =>
-              setCurrentStep((s) => (s < 2 ? ((s + 1) as 0 | 1 | 2) : s))
-            }
+            onClick={async () => {
+              if (currentStep < 2) {
+                setCurrentStep((s) => (s + 1) as 0 | 1 | 2);
+              } else {
+                const stripe = await stripePromise;
+                const res = await fetch('/api/checkout', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    amount: donation,
+                    email: contact.email,
+                  }),
+                });
+
+                const data = await res.json();
+                if (data.id) {
+                  await stripe?.redirectToCheckout({ sessionId: data.id });
+                }
+              }
+            }}
             disabled={
-              currentStep === 0 && donation <= 0
-                ? true
-                : currentStep === 1 &&
-                  (!contact.firstName || !contact.lastName || !contact.email)
+              (currentStep === 0 && donation <= 0) ||
+              (currentStep === 1 &&
+                (!contact.firstName || !contact.lastName || !contact.email))
             }
-            className={`px-6 py-3 rounded-lg font-semibold transition ${
-              currentStep === 2
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-[#0F2345] text-white hover:bg-[#123]"
-            }`}
+            className={`px-6 py-3 rounded-lg font-semibold transition ${currentStep === 2
+              ? "bg-[#49a0a7] text-white hover:bg-[#3c8a8e]"
+              : "bg-[#0F2345] text-white hover:bg-[#123]"
+              }`}
           >
-            {currentStep < 2 ? "Next" : "Finish"}
+            {currentStep < 2 ? "Next" : "Donate"}
           </button>
         </div>
       </div>
