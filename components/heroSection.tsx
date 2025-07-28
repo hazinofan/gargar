@@ -43,7 +43,9 @@ export default function HeroSection() {
                 className="text-2xl xs:text-3xl sm:text-4xl font-bold leading-tight"
                 variants={fadeIn}
               >
-               <p> Together for a strong Ward 9 </p>
+                <p className="bg-gradient-to-r from-red-500 to-[#49a0a7] bg-clip-text text-transparent font-bold text-4xl">
+                  Together for a strong Ward 9
+                </p>
               </motion.h1>
               <motion.p
                 className="text-base xs:text-lg sm:text-xl max-w-lg mx-auto"
@@ -53,15 +55,11 @@ export default function HeroSection() {
               </motion.p>
             </motion.div>
           </div>
-          
+
           {/* Image section - mobile */}
           <div className="flex justify-center pb-8">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={fadeIn}
-            >
-              <div className="w-[180px] h-[180px] xs:w-[200px] xs:h-[200px] sm:w-[220px] sm:h-[220px]">
+            <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+              <div className="w-[410px] h-[410px] xs:w-[200px] xs:h-[200px] sm:w-[220px] sm:h-[220px]">
                 <Image
                   src="/assets/520279053_10237040292407623_8431957161010493328_n_edited.png"
                   alt="Gar Gar"
@@ -114,10 +112,7 @@ export default function HeroSection() {
               Together for a<br />
               <span className="md:text-6xl">strong Ward 9</span>
             </motion.h1>
-            <motion.p
-              className="md:text-xl max-w-lg"
-              variants={fadeIn}
-            >
+            <motion.p className="md:text-xl max-w-lg" variants={fadeIn}>
               Gar Gar
             </motion.p>
           </motion.div>
