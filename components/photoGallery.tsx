@@ -9,6 +9,7 @@ interface Photo {
 export default function PhotoGridGallery({ photos }: { photos: Photo[] }) {
   return (
     <section className="py-8 bg-white px-2 sm:px-4">
+      <h1 className=" text-xl md:text-4xl font-semibold place-self-center mb-8">Moments That Matter: A Journey Through Service and Community</h1>
       <div className="max-w-screen-2xl mx-auto">
         {/* Grid Gallery with Full-Height Images */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">

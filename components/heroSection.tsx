@@ -57,7 +57,7 @@ export default function HeroSection() {
           </div>
 
           {/* Image section - mobile */}
-          <div className="flex justify-center pb-8">
+          <div className="flex justify-center ">
             <motion.div initial="hidden" animate="visible" variants={fadeIn}>
               <div className="w-[410px] h-[410px] xs:w-[200px] xs:h-[200px] sm:w-[220px] sm:h-[220px]">
                 <Image
@@ -78,7 +78,7 @@ export default function HeroSection() {
         {/* 2a) Left column: image pinned bottom-left - desktop only */}
         <div className="relative flex-shrink-0 hidden md:block md:h-full md:w-1/2">
           <motion.div
-            className="absolute bottom-0 left-80 md:p-6"
+            className="absolute bottom-0 left-[150px]"
             initial="hidden"
             animate="visible"
             variants={fadeIn}
