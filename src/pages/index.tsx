@@ -8,9 +8,47 @@ import StorySection from "../../components/story";
 import StoryCarousel from "../../components/cardsSectionon";
 import HeroWithNav from "../../components/HeroWithNav";
 import VideoSection from "../../components/videosSection";
-import TestimonialCarousel, { TestimonialItem } from "../../components/testimonial";
+import TestimonialCarousel, {
+  TestimonialItem,
+} from "../../components/testimonial";
+import ModernGalleryCarousel from "../../components/photoGallery";
 
 const index = () => {
+const photos = [
+  { src: "/gallery/462843708_10233119615713156_3555438892877197623_n (1).jpg", alt: "462843708_10233119615713156_3555438892877197623_n (1)", caption: "" },
+  { src: "/gallery/470174814_10234414679008929_6325799572402460389_n.jpg", alt: "470174814_10234414679008929_6325799572402460389_n", caption: "" },
+  { src: "/gallery/488681515_10235434976355725_54941042868094629_n.jpg", alt: "488681515_10235434976355725_54941042868094629_n", caption: "" },
+  { src: "/gallery/494821921_10235778134134455_1502831083522895841_n.jpg", alt: "494821921_10235778134134455_1502831083522895841_n", caption: "" },
+  { src: "/gallery/495664422_10235937504958626_6791000500400868667_n.jpg", alt: "495664422_10235937504958626_6791000500400868667_n", caption: "" },
+  { src: "/gallery/496796549_10235960626696655_3931478899648886415_n.jpg", alt: "496796549_10235960626696655_3931478899648886415_n", caption: "" },
+  { src: "/gallery/496936059_10235932746639671_1446161959950035460_n (1).jpg", alt: "496936059_10235932746639671_1446161959950035460_n (1)", caption: "" },
+  { src: "/gallery/496936059_10235932746639671_1446161959950035460_n (1)_1.jpg", alt: "496936059_10235932746639671_1446161959950035460_n (1)_1", caption: "" },
+  { src: "/gallery/502470814_10236195940619356_5948378098740984743_n.jpg", alt: "502470814_10236195940619356_5948378098740984743_n", caption: "" },
+  { src: "/gallery/502628058_10236195941099368_648940732265744369_n.jpg", alt: "502628058_10236195941099368_648940732265744369_n", caption: "" },
+  { src: "/gallery/502628058_10236195941099368_648940732265744369_n_1.jpg", alt: "502628058_10236195941099368_648940732265744369_n_1", caption: "" },
+  { src: "/gallery/502629022_10236228683037896_21857933066722921_n.jpg", alt: "502629022_10236228683037896_21857933066722921_n", caption: "" },
+  { src: "/gallery/503215085_10236228691158099_5371988107213270120_n.jpg", alt: "503215085_10236228691158099_5371988107213270120_n", caption: "" },
+  { src: "/gallery/503459188_10236234400980841_4540036424913512597_n.jpg", alt: "503459188_10236234400980841_4540036424913512597_n", caption: "" },
+  { src: "/gallery/503505559_10236233813486154_7547959962877151551_n.jpg", alt: "503505559_10236233813486154_7547959962877151551_n", caption: "" },
+  { src: "/gallery/504151180_10236277610061041_3157909158704856589_n.jpg", alt: "504151180_10236277610061041_3157909158704856589_n", caption: "" },
+  { src: "/gallery/506857426_10236472292367977_4483595862465722981_n.jpg", alt: "506857426_10236472292367977_4483595862465722981_n", caption: "" },
+  { src: "/gallery/508338375_10236473575920065_3266430653203567237_n.jpg", alt: "508338375_10236473575920065_3266430653203567237_n", caption: "" },
+  { src: "/gallery/508349450_10236474946234322_7050711604381227568_n.jpg", alt: "508349450_10236474946234322_7050711604381227568_n", caption: "" },
+  { src: "/gallery/508445017_10236468455232051_871993687138658569_n.jpg", alt: "508445017_10236468455232051_871993687138658569_n", caption: "" },
+  { src: "/gallery/508445017_10236468455232051_871993687138658569_n_1.jpg", alt: "508445017_10236468455232051_871993687138658569_n_1", caption: "" },
+  { src: "/gallery/510022100_10236603042596651_2150139833846679617_n.jpg", alt: "510022100_10236603042596651_2150139833846679617_n", caption: "" },
+  { src: "/gallery/518638907_10172575226805112_6665276835865334190_n.jpg", alt: "518638907_10172575226805112_6665276835865334190_n", caption: "" },
+  { src: "/gallery/Motivational speaker.jpg", alt: "Motivational speaker", caption: "" },
+  { src: "/gallery/President council.jpg", alt: "President council", caption: "" },
+  { src: "/gallery/award -.JPG", alt: "award -", caption: "" },
+  { src: "/gallery/community.jpg", alt: "community", caption: "" },
+  { src: "/gallery/ogden volunteer.jpg", alt: "ogden volunteer", caption: "" },
+  { src: "/gallery/vetrans.jpg", alt: "vetrans", caption: "" },
+  { src: "/gallery/youth advocate.jpg", alt: "youth advocate", caption: "" }
+];
+
+
+
   const testimonials: TestimonialItem[] = [
     {
       name: "Neveen Dominic",
@@ -19,15 +57,13 @@ const index = () => {
         "Gar Gar was my colleague at SAIT. Because of his work ethic and commitment to excellence, I highly recommend him. One of his many outstanding achievements is creating a scholarship to further South Sudanese youth education at SAIT. He also demonstrated strong leadership as SAITSA president. I am a proud supporter of his education initiative!",
       image: "/assets/Neveen endorsement_edited.png",
     },
-    // …more testimonials…
   ];
 
   return (
     <div>
       <HeroSection />
       <GarGarHero />
-      {/* <StatementCards />
-      <PhotoGallery photos={photos} /> */}
+      {/* <StatementCards /> */}
       <StoryCarousel
         items={[
           {
@@ -123,6 +159,7 @@ const index = () => {
       </section>
 
       <HeroWithNav />
+      <ModernGalleryCarousel photos={photos} />
 
       <VideoSection />
       <StorySection />
